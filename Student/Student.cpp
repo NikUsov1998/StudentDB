@@ -50,7 +50,7 @@ void Student::WriteToFile(std::vector<Student>& ArrayOfStudents)
 	}
 	fout.close(); // поток зарывается для освобождения ресурсов компьютера
 }
-void Student::ReadFromFile()
+void Student::ReadFromFile(std::vector<Student>& students)
 {
 	std::string inputFile = "Input.txt"; // название файла ввода
 	std::ifstream fin;	// объект класса потока ввода файла
@@ -61,7 +61,6 @@ void Student::ReadFromFile()
 		return;
 	}
 	std::string str; // строка в которую будет записываться каждый 
-	std::vector<Student> students;// обязательно чтобы колонки были разделены табом в файле вывода, иначе может сломаться распознавание
 	while (!fin.eof()) //цикл до конца файла
 	{
 		Student tmp;
@@ -82,14 +81,9 @@ void Student::ReadFromFile()
 		tmp.examScore = std::stoi(tokens[4]);
 		students.push_back(tmp);
 		std::cout << str << std::endl;
-
 	}
-	updateVector(students);
+
 	fin.close();
-}
-void Student::updateVector(std::vector<Student>& getVec)
-{
-	updatedVec = getVec;
 }
 //***********************Геттеры и сеттеры********************************
 std::string Student::GetBirthday()

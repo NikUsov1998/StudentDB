@@ -109,21 +109,18 @@ void BithdaySort(std::vector<Student>& ArrayOfStudents)
 				DataParser(hisBirthday, currDay, currMonth, currYear);
 			}
 		}
-		youngestStud.updateVector(ArrayOfStudents);
 	}
 }
 
 int main()
 {
-	setlocale(LC_ALL, "ru");		// выставляет кодировку
-	Student stud;					// создаёт объект класса с которым всё работает
-	std::vector<Student> students;	// создаётся вектор(динамический массив) объектов класса студент для ввода вывода через файл
-	stud.ReadFromFile();			// чтение всех данных из файла
-	students = stud.updatedVec;		// заполнеям вектор объектами класса (тут костыль, мне кажется я перемудрил с заданием)
-	students.shrink_to_fit();		// освобождение памяти от хвоста вектора
-	YoungestStudentSearch(students);// передача вектора в функцию поиска самого молодого студента
-	BithdaySort(students);			// передача вектора в функцию сортировки
-	stud.WriteToFile(students);		// запись в файл
-	stud.Print(students);
+	setlocale(LC_ALL, "ru");					// выставляет кодировку
+	std::vector<Student> students{Student()};	// создаётся вектор(динамический массив) объектов класса студент для ввода вывода через файл
+	students[0].ReadFromFile(students);			// чтение данных из файла		
+	students.shrink_to_fit();					// освобождение памяти от хвоста вектора
+	YoungestStudentSearch(students);			// передача вектора в функцию поиска самого молодого студента
+	BithdaySort(students);						// передача вектора в функцию сортировки
+	students[0].WriteToFile(students);			// запись в файл
+	students[0].Print(students);
 	std::cin;
 }
