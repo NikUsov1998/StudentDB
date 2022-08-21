@@ -15,6 +15,9 @@ Student::Student(std::string FIO, std::string sex, std::string birthday, double 
 	this->bitrhday = birthday;
 	this->height = height;
 	this->examScore = examScore;
+}Student::~Student()
+{
+
 }
 //******************* Методы описанные в ТЗ******************************
 void Student::Print()

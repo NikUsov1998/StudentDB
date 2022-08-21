@@ -21,6 +21,8 @@ struct Student	// структура из ТЗ содержит: ФИО, Пол, Дату рождения, Рост, Выпус
 	/// <param name="examScore"></param>
 	Student(std::string FIO, std::string sex, std::string birthday, double height, int examScore);
 
+	~Student();
+
 private:				// Поля класса должны быть private, во избежание ошибок (инкапсуляция)
 	std::string FIO;	// Поля
 	std::string sex;
