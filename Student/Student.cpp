@@ -68,24 +68,31 @@ void Student::ReadFromFile(std::vector<Student>& students)
 	{
 		Student tmp;
 		str = "";
-		std::getline(fin, str); // получене строки
+ 		std::getline(fin, str); // получене строки
 		std::string sentence = str;
 		std::istringstream iss(sentence);
 		std::vector<std::string> tokens;
 		std::string token;
-		while (std::getline(iss, token, '\t')) {	// парсинг даты формата ДД.ММ.ГГГГ на день месяц и год для дальнейшего сравнения, разделителем служит табуляция
-			if (!token.empty())
-				tokens.push_back(token);
+		if (str.empty())
+		{
+			fin.clear();
+			fin.ignore(0, '\n');
 		}
-		tmp.FIO = tokens[0];
-		tmp.sex = tokens[1];
-		tmp.bitrhday = tokens[2];
-		tmp.height = std::stod(tokens[3]);
-		tmp.examScore = std::stoi(tokens[4]);
-		students.push_back(tmp);
-		std::cout << str << std::endl;
+		else
+		{
+			while (std::getline(iss, token, '\t')) {	// парсинг даты формата ДД.ММ.ГГГГ на день месяц и год для дальнейшего сравнения, разделителем служит табуляция
+				if (!token.empty())
+					tokens.push_back(token);
+			}
+			tmp.FIO = tokens[0];
+			tmp.sex = tokens[1];
+			tmp.bitrhday = tokens[2];
+			tmp.height = std::stod(tokens[3]);
+			tmp.examScore = std::stoi(tokens[4]);
+			students.push_back(tmp);
+			std::cout << str << std::endl;
+		}
 	}
-
 	fin.close();
 }
 //***********************Геттеры и сеттеры********************************
