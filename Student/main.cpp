@@ -10,12 +10,27 @@ void DataParser(std::string date, int& parsedDay, int& parsedMonth, int& parsedY
 	std::vector<std::string> tokens;
 	std::string token;
 	while (std::getline(iss, token, '.')) {	// парсинг даты формата ДД.ММ.ГГГГ на день месяц и год для дальнейшего сравнения, разделителем служит точка
-		if (!token.empty())
-			tokens.push_back(token);
+		if (token.empty())
+		{
+			std::cout << "Found wrong date " << sentence << '\n';
+			token.push_back(1);
+		}
+		tokens.push_back(token);
 	}
-	parsedDay = std::stoi(tokens[0]);
-	parsedMonth = std::stoi(tokens[1]);
-	parsedYear = std::stoi(tokens[2]);
+	try
+	{
+		parsedDay = std::stoi(tokens[0]);
+		parsedMonth = std::stoi(tokens[1]);
+		parsedYear = std::stoi(tokens[2]);
+	}
+	catch (const std::exception& ex)
+	{
+		std::cout << ex.what() << '\n' << parsedDay << parsedMonth << parsedYear << '\n';
+		return;
+	}
+
+
+
 }
 
 void YoungestStudentSearch(std::vector<Student>&ArrayOfStudents) // функция поиска принимает указатель на массив со студентами и размер этого массива
