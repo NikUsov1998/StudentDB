@@ -25,11 +25,9 @@ void DataParser(std::string date, int& parsedDay, int& parsedMonth, int& parsedY
 	}
 	catch (const std::exception& ex)
 	{
-		std::cout << ex.what() << '\n' << parsedDay << parsedMonth << parsedYear << '\n';
+		std::cout << ex.what() << " in " << tokens[0] << '.' << tokens[1] << '.' << tokens[2] << '\n';
 		return;
 	}
-
-
 
 }
 
@@ -45,7 +43,6 @@ void YoungestStudentSearch(std::vector<Student>&ArrayOfStudents) // функци
 	std::string hisBirthday = youngestStud.GetBirthday();
 	int currDay, currMonth, currYear = NULL;
 	DataParser(hisBirthday, currDay, currMonth, currYear);
-
 	for (int i = 0; i < ArrayCapacity; ++i) // цикл проверки
 	{
 		Student tmpStud = ArrayOfStudents[i];
