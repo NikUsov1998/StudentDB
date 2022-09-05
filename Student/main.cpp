@@ -15,7 +15,7 @@ void DataParser(std::string date, int& parsedDay, int& parsedMonth, int& parsedY
 			std::cout << "Found wrong date " << sentence << '\n';
 			token.push_back(1);
 		}
-		tokens.push_back(token);
+		tokens.emplace_back(token);
 	}
 	try
 	{

@@ -82,14 +82,14 @@ void Student::ReadFromFile(std::vector<Student>& students)
 		{
 			while (std::getline(iss, token, '\t')) {	// парсинг даты формата ДД.ММ.ГГГГ на день месяц и год для дальнейшего сравнения, разделителем служит табуляция
 				if (!token.empty())
-					tokens.push_back(token);
+					tokens.emplace_back(token);
 			}
 			tmp.FIO = tokens[0];
 			tmp.sex = tokens[1];
 			tmp.bitrhday = tokens[2];
 			tmp.height = std::stod(tokens[3]);
 			tmp.examScore = std::stoi(tokens[4]);
-			students.push_back(tmp);
+			students.emplace_back(tmp);
 			std::cout << str << std::endl;
 		}
 	}
