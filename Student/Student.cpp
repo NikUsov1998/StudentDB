@@ -40,7 +40,7 @@ void Student::WriteToFile(std::vector<Student>& ArrayOfStudents)
 {
 	std::string outputFile = "Output.txt"; // Название файла вывода
 	std::fstream fout;			// объект класса потока вывода файла
-	fout.open(outputFile, std::ofstream::app);		// открывает файл
+	fout.open(outputFile);		// открывает файл
 	if (!fout.is_open())		// проверка на открытие
 	{
 		std::cout << "Cannot open the output file!!!\n";
